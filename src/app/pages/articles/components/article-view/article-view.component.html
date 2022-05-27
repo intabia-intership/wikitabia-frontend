@@ -1,0 +1,54 @@
+<in-card class="article-row">
+    <div class="article-info">
+        <div class="article-controls">
+            <span>
+                <button (click)="changeLikes('thumb_up')">
+                    <mat-icon>thumb_up</mat-icon>
+                </button>
+                {{ currentArticle?.thumb_up }}
+            </span>
+            <span>
+                <button (click)="changeLikes('thumb_down')">
+                    <mat-icon>thumb_down</mat-icon>
+                </button>
+                {{ currentArticle?.thumb_down }}
+            </span>
+        </div>
+        <div class="article-controls">
+            <span>
+                <button (click)="editHandler()">
+                    <mat-icon>create</mat-icon>
+                </button>
+            </span>
+            <span>
+                <button (click)="deleteHandler()">
+                    <mat-icon>delete_sweep</mat-icon>
+                </button>
+            </span>
+        </div>
+    </div>
+</in-card>
+
+<in-card class="article-row">
+    <div class="article-info">
+        <span>
+            <b>Сложность:</b> {{ difficultyName }}
+        </span>
+        <span>
+            <a [href]="currentArticle?.link">Перейти к статье по ссылке</a>
+        </span>
+    </div>
+</in-card>
+
+
+<div class="article-row">
+    <h2 class="article-title">{{ currentArticle?.article }}</h2>
+</div>
+
+<div class="article-row">
+    <in-textarea
+        [value]="currentArticle?.description"
+        minRow="5"
+        readonly="true"
+        autosize="true"></in-textarea>
+</div>

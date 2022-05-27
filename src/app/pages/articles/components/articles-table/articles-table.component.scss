@@ -1,0 +1,51 @@
+.articles-table, .articles-paginator {
+    background-color: var(--GRAY);
+}
+
+.articles-table {
+    overflow: visible;
+
+    in-cell {
+        overflow: visible;
+    }
+    
+    button {
+        margin-right: 10px;
+    }
+
+    &__prompt div {
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        right: 101%;
+        visibility: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 5px;
+        background-color: var(--WHITE);
+        border-radius: 6px;
+        opacity: 0;
+
+        in-tag {
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+    }
+    
+    &__tag {
+        position: relative;
+    
+        &:hover {
+            .articles-table__prompt div {
+                visibility: visible;
+                opacity: 1;
+                transition: opacity .3s;
+            }
+        }
+
+        in-tag {
+            display: inline-block;
+            margin: 2px;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+in-card {
+    background-color: #EFEFEF;
+}
+
+.form {
+    margin-top: 40px;
+
+    h3 {
+        font-weight: 500;
+    }
+
+    p {
+        margin-top: 16px;
+    }
+}
+
+.form-row {
+    margin-top: 20px;
+}
+
+.form-item {
+    margin-left: 40px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+.controls-row {
+    margin-top: 80px;
+}
+
+.controls-item {
+    margin-left: 20px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    &:last-child {
+        margin-left: 0;
+    }
+}

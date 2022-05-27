@@ -1,0 +1,46 @@
+<div class="add-article">
+    <div class="add-article__header">
+        <h3>Добавление статьи</h3>
+        <button (click)="onClose()">&#10008;</button>
+    </div>
+    <form class="add-article__form" [formGroup]="addArticleForm">
+        <in-input
+            label="Название"
+            placeholder="Введите название"
+            type="text"
+            [formCtrl]="addArticleForm.get('title')"
+        ></in-input>
+        <in-input
+            label="Ссылка"
+            placeholder="Укажите ссылку на статью"
+            type="text"
+            [formCtrl]="addArticleForm.get('link')"
+        ></in-input>
+        <in-textarea
+            label="Краткое описание"
+            placeholder="Введите краткое описание"
+            [autosize]="true"
+            [formCtrl]="addArticleForm.get('description')"
+        ></in-textarea>
+        <in-select
+            [formCtrl]="addArticleForm.get('tags')"
+            [options]="tagsOptions"
+            [isMultiple]="true"
+            [isFilter]="true"
+            label="Теги"
+        ></in-select>
+        <in-select
+            [formCtrl]="addArticleForm.get('difficulty')"
+            [options]="difficultOptions"
+            label="Сложность"
+        ></in-select>
+        <in-button
+            (click)="addArticle()"
+            [disabled]="addArticleForm.invalid"
+            type="raised"
+            appearance="accent"
+        >
+            Добавить
+        </in-button>
+    </form>
+</div>

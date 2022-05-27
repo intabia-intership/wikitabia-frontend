@@ -1,0 +1,15 @@
+.articles-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--GRAY);
+
+    &__form {
+        display: flex;
+        align-items: center;
+    }
+
+    &__item {
+        margin-right: 20px;
+    }
+}

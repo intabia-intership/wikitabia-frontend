@@ -1,0 +1,17 @@
+<div class="article-list-item">
+    <app-articles-search
+        [tagsFilterOptions]="tagsFilterOptions"
+        [difficultyFilterOptions]="difficultyFilterOptions"
+        (filterChange)="changeFilter($event)"
+    ></app-articles-search>
+</div>
+<div class="article-list-item">
+    <app-articles-table
+        [articles]="articles"
+        [pageInfo]="pageInfo"
+        [difficultyOptions]="difficultyFilterOptions"
+        [tagsOptions]="tagsFilterOptions"
+        (navigateChange)="navigate($event)"
+        (sortChange)="changeSort($event)"
+    ></app-articles-table>
+</div>

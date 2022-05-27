@@ -1,0 +1,22 @@
+<div class="breadcrumbs">
+    <a routerLink="../">&ang; Вернуться к списку статей</a>
+</div>
+
+<app-article-view
+    *ngIf="isArticleView; else articleEditing"
+    [currentArticle]="currentArticle"
+    [difficultyName]="difficultyName"
+    (edit)="isArticleView = false"
+    (delete)="deleteArticle()"
+></app-article-view>
+
+<ng-template #articleEditing>
+    <app-article-editing 
+        [currentArticle]="currentArticle"
+        [articleForm]="articleForm"
+        [difficultyOptions]="difficultyOptions"
+        [tags]="tags"
+        [tagsOptions]="tagsOptions"
+        (save)="saveArticle($event)"
+    ></app-article-editing>
+</ng-template>

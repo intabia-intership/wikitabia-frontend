@@ -1,0 +1,33 @@
+<div class="logo">
+    <a href="http://intabia.ru">
+        <img src="../../../assets/img/logo.png" alt="logo">
+    </a>
+</div>
+<div class="description">
+    <h2>Wikitabia</h2>
+    <p>сервис обмена полезными ссылками</p>
+</div>
+<in-card class="form">
+    <form [formGroup]="fb">
+        <in-input
+            label="Логин"
+            placeholder="Логин"
+            type="text"
+            [formCtrl]="fb.get('name')"
+        ></in-input>
+        <in-input
+            label="Пароль"
+            placeholder="Пароль"
+            type="password"
+            [formCtrl]="fb.get('password')"
+        ></in-input>
+    </form>
+    <in-button 
+        type="flat"
+        appearance="primary"
+        [disabled]="fb.invalid"
+        (click)="login()"
+    >
+        Войти
+    </in-button>
+</in-card>

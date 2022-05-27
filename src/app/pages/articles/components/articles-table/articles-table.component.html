@@ -1,0 +1,73 @@
+<in-table class="articles-table">
+  <in-header-row>
+    <in-header-cell
+      *ngFor="let column of configTable"
+      [sortData]="getCellSort(column.cell)"
+      (sortChange)="changeSort($event)"
+    >
+      {{column.name}}
+    </in-header-cell>
+  </in-header-row>
+  <in-row *ngFor="let article of articles">
+    <in-cell *ngFor="let column of configTable">
+
+      <!-- Название -->
+      <ng-container *ngIf="column.cell === articleTable.article">
+        <a [routerLink]="[article.id]">{{ article[column.cell] }}</a>
+      </ng-container>
+
+      <!-- Ссылка -->
+      <ng-container *ngIf="column.cell === articleTable.link">
+        <a [href]="article[column.cell]">Перейти к статье</a>
+      </ng-container>
+
+      <!-- Теги -->
+      <div class="articles-table__tag" *ngIf="column.cell === articleTable.tags">
+        <in-tag 
+          *ngFor="let item of article[column.cell] | slice:0:3"
+          [appearance]="getTagColor(item)"
+        >
+          {{ getTagName(item) }}
+        </in-tag>
+        <span
+          class="articles-table__prompt"
+          *ngIf="article[column.cell].length > 3"
+        >
+          ...
+          <div>
+            <ng-container *ngFor="let tag of article[column.cell]">
+              <in-tag [appearance]="getTagColor(tag)">{{ getTagName(tag) }}</in-tag>
+            </ng-container>
+          </div>
+        </span>
+      </div>
+      
+      <!-- Сложность -->
+      <ng-container *ngIf="column.cell === articleTable.difficulty">
+        {{ getDifficulty(article[column.cell]) }}
+      </ng-container>
+
+      <!-- Лайк -->
+      <ng-container *ngIf="column.cell === articleTable.thumb_up">
+        <button (click)="tableButtonHandler(article.id, column.cell)">
+          <mat-icon>{{ column.cell }}</mat-icon>
+        </button>
+        {{ article[column.cell] }}
+      </ng-container>
+
+      <!-- Дизлайк -->
+      <ng-container *ngIf="column.cell === articleTable.thumb_down">
+        <button (click)="tableButtonHandler(article.id, column.cell)">
+          <mat-icon>{{ column.cell }}</mat-icon>
+        </button>
+        {{ article[column.cell] }}
+      </ng-container>
+      
+    </in-cell>
+  </in-row>
+</in-table>
+<in-paginator
+  class="articles-paginator"
+  [pageInfo]="pageInfo"
+  (navigate)="navigateChange.emit($event)"
+></in-paginator>

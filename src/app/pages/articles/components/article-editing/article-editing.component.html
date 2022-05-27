@@ -1,0 +1,91 @@
+<form class="form" [formGroup]="articleForm">
+    <in-card class="form-row">
+        <in-input
+            class="form-item"
+            [formCtrl]="articleForm.get('article')"
+            placeholder="Название статьи"
+            label="Название статьи"
+            type="text"
+        ></in-input>
+        <in-input
+            class="form-item"
+            [formCtrl]="articleForm.get('link')"
+            placeholder="Ссылка"
+            label="Ссылка"
+            type="text"
+        ></in-input>
+        <in-select
+            class="form-item"
+            [formCtrl]="articleForm.get('difficulty')"
+            [options]="difficultyOptions"
+            [isFilter]="true"
+            label="Сложность"
+        ></in-select>
+    </in-card>
+
+
+    <in-card class="form-row">
+        <in-textarea
+            class="form-item"
+            [formCtrl]="articleForm.get('description')"
+            [autosize]="true"
+            minRow = 5
+            label="Краткое описание"
+            placeholder="Введите краткое описание"
+        ></in-textarea>
+    </in-card>
+
+    <in-card class="form-row">
+        <h3>Выбранные теги:</h3>
+        <ng-container *ngIf="tags.length; else emptyTagList">
+            <in-tag 
+                class="tag"
+                *ngFor="let tag of tags"
+                [appearance]="getTagColor(tag)"
+                (click)="removeTag(tag)"
+            >
+                {{ getTagName(tag) }}
+            </in-tag>
+        </ng-container>
+        <ng-template #emptyTagList>
+            <p>Нет выбранных тегов</p>
+        </ng-template>
+    </in-card>
+
+    <in-card class="form-row">
+        <h3>Доступные теги:</h3>        
+        <ng-container *ngIf="availableTags.length; else emptyAvailableTagList">
+            <in-tag
+                class="tag"
+                *ngFor="let tag of availableTags"
+                [appearance]="tag.color"
+                (click)="addTag(tag.id)"
+            >
+                {{ tag.viewValue }}
+            </in-tag>
+        </ng-container>
+        
+        <ng-template #emptyAvailableTagList>
+            <p>Нет доступных тегов</p>
+        </ng-template>
+    </in-card>
+</form>
+
+<div class="controls-row">
+    <in-button
+        class="controls-item"
+        appearance="accent"
+        type="raised"
+        (click)="saveHandler(true)"
+    >
+        Сохранить
+    </in-button>
+    <in-button
+        class="controls-item"
+        appearance="warn"
+        type="raised"
+        (click)="saveHandler(false)"
+    >
+        Отменить
+    </in-button>
+</div>

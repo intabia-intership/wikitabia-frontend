@@ -1,0 +1,9 @@
+<in-toolbar
+    [exitIcon]="true"
+    (exitClick)="exitActionClick()"
+    [menu]="toolBarMenu"
+    [(selected)]="selectedToolbarItem"
+    [buttons]="buttons"
+    (selectedChange)="navigate($event)"
+    (buttonClick)="buttonActionClick($event)"
+></in-toolbar>

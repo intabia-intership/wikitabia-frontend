@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/styles/reset.scss';
+@import './assets/styles/layout.scss';
+
+:root {
+    // Spaces
+    --S4: 4px;
+    --S8: 8px;
+    --S10: 10px;
+    --S12: 12px;
+    --S16: 16px;
+    --S20: 20px;
+    --S24: 24px;
+    --S32: 32px;
+    --S40: 40px;
+    --S48: 48px;
+    --S64: 64px;
+    --S180: 180px;
+    --S260: 260px;
+
+    // Spaces layout
+    --L1240: 1240px;
+
+    // colors
+    --GRAY: #efefef;
+    --WHITE: #fff;
+}  
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.breadcrumbs {
+    margin-top: 20px;
+}
+
+.mat-dialog-container {
+    max-height: 100vh !important;
+}

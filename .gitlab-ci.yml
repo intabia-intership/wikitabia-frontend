@@ -1,0 +1,12 @@
+stages:
+  - verify
+
+verify:
+  stage: verify
+  script:
+    - npm set _auth $NEXUS_AUTH
+    - npm install
+    - npm run build
+  except:
+    - develop
+    - master

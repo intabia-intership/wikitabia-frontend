@@ -1,0 +1,30 @@
+<in-card class="articles-search">
+    <form class="articles-search__form" [formGroup]="filterForm">
+        <in-input 
+            [formCtrl]="filterForm.get('title')"
+            class="articles-search__item"
+            label="Название"
+            placeholder="Выберите название"
+        ></in-input>
+        <in-select
+            class="articles-search__item"
+            [formCtrl]="filterForm.get('tags')"
+            [options]="tagsFilterOptions"
+            [isFilter]="true"
+            label="Теги"
+        ></in-select>
+        <in-select
+            class="articles-search__item"
+            [formCtrl]="filterForm.get('difficulty')"
+            [options]="difficultyFilterOptions"
+            label="Сложность"
+        ></in-select>
+    </form>
+    <in-button
+        (click)="resetFilter()"
+        type="raised"
+        appearance="warn"
+    >
+        Сбросить
+    </in-button>
+</in-card>
