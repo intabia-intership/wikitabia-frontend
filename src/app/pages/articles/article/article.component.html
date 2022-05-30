@@ -6,6 +6,8 @@
     *ngIf="isArticleView; else articleEditing"
     [currentArticle]="currentArticle"
     [difficultyName]="difficultyName"
+    [tags]="tags"
+    [tagsOptions]="tagsOptions"
     (edit)="isArticleView = false"
     (delete)="deleteArticle()"
 ></app-article-view>

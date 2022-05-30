@@ -1,0 +1,35 @@
+<in-card>
+    <h3>Выбранные теги:</h3>
+    <ng-container *ngIf="tags.length; else emptyTagList">
+        <in-tag 
+            class="tag"
+            [ngClass]="{'tag--pointer': isEditing}"
+            *ngFor="let tag of tags"
+            [appearance]="getTagColor(tag)"
+            (click)="removeTag(tag)"
+        >
+            {{ getTagName(tag) }}
+        </in-tag>
+    </ng-container>
+    <ng-template #emptyTagList>
+        <p>Нет выбранных тегов</p>
+    </ng-template>
+</in-card>
+
+<in-card *ngIf="isEditing">
+    <h3>Доступные теги:</h3>        
+    <ng-container *ngIf="availableTags.length; else emptyAvailableTagList">
+        <in-tag
+            class="tag tag--pointer"
+            *ngFor="let tag of availableTags"
+            [appearance]="tag.color"
+            (click)="addTag(tag.id)"
+        >
+            {{ tag.viewValue }}
+        </in-tag>
+    </ng-container>
+    
+    <ng-template #emptyAvailableTagList>
+        <p>Нет доступных тегов</p>
+    </ng-template>
+</in-card>

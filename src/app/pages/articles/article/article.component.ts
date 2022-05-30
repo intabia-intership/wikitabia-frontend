@@ -94,7 +94,9 @@ export class ArticleComponent implements OnInit, OnDestroy {
         this.articlesHttp.updateArticle(
           this.articleId,
           articleInfo,
-        )
+        ).subscribe(() => {
+          this.getArticle();
+        })
       );
     }
     this.isArticleView = true;

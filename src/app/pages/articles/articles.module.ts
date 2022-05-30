@@ -24,6 +24,7 @@ import {
   InButtonModule,
   InTextareaModule,
 } from '@intabia/angular-ui';
+import { TagListComponent } from 'src/app/shared/components/tag-list/tag-list.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {
     ArticleEditingComponent,
     ArticleViewComponent,
     AddArticleComponent,
+    TagListComponent,
   ],
   imports: [
     CommonModule,

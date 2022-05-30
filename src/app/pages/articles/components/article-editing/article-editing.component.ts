@@ -15,27 +15,6 @@ export class ArticleEditingComponent {
 
   @Output() save = new EventEmitter<any>();
 
-  get availableTags(): ITagOptions[] {
-    return this.tagsOptions.filter((tag) => this.tags.includes(tag.id) || !tag.id ? false : tag);
-  }
-
-  getTagName(id: string): string {
-    return this.tagsOptions.find((item) => item.id === id)?.viewValue ?? '';
-  }
-
-  getTagColor(id: string): string {
-    return this.tagsOptions.find((item) => item.id === id)?.color ?? 'default';
-  }
-
-  addTag(tag: string) {
-    this.tags.push(tag);
-  }
-
-  removeTag(tag: string) {
-    const idx = this.tags.indexOf(tag);
-    this.tags.splice(idx, 1);
-  }
-
   saveHandler(isSave: boolean) {
     const data = this.articleForm.getRawValue();
     data.tags = this.tags;

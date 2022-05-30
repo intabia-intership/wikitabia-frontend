@@ -10,7 +10,7 @@ import { INewArticle } from 'src/app/shared/models/article.interfaces';
   providedIn: 'root'
 })
 export class ArticlesHttpService {
-  content = [
+  readonly content = [
     {
       id: '1',
       article: 'Hello World',
@@ -32,21 +32,22 @@ export class ArticlesHttpService {
       thumb_down: 42
     }
   ];
+  readonly pageInfo = {
+    offset: 0,
+    pageSize: 1,
+    total: 2
+  };
 
   constructor(private http: HttpClient) { }
 
   getArticles(
-      params: InPageInfo,
-      sort: InSort | null,
-      filter: IFilter | null,
-    ): Observable<IArticlesInfo> {
+    params: InPageInfo,
+    sort: InSort | null,
+    filter: IFilter | null,
+  ): Observable<IArticlesInfo> {
     return of({
       content: this.content,
-      pageInfo: {
-        offset: 0,
-        pageSize: 1,
-        total: 2
-      }
+      pageInfo: this.pageInfo,
     });
   }
 
@@ -62,6 +63,7 @@ export class ArticlesHttpService {
 
   updateArticle(id: string, article: IArticleInfo) {
     // TODO: реализовать, когда будет бэк
+    return of(true);
   }
 
   deleteArticle(id: string) {
