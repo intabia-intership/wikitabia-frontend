@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ITagOptions } from 'src/app/shared/models/article.interfaces';
+import { TagsService } from 'src/app/shared/services/tags.service';
 
 @Component({
   selector: 'app-tag-list',
@@ -7,13 +8,23 @@ import { ITagOptions } from 'src/app/shared/models/article.interfaces';
   styleUrls: ['./tag-list.component.scss']
 })
 export class TagListComponent {
-  @Input() tags: string[] = [];
-  @Input() tagsOptions: ITagOptions[] = [];
   @Input() isEditing = false;
+
+  get tags(): string[] {
+    return this.tagsService.tags;
+  }
+
+  get tagsOptions(): ITagOptions[] {
+    return this.tagsService.tagsOptions;
+  }
 
   get availableTags(): ITagOptions[] {
     return this.tagsOptions.filter((tag) => this.tags.includes(tag.id) || !tag.id ? false : tag);
   }
+
+  constructor(
+    private tagsService: TagsService,
+  ) { }
 
   getTagName(id: string): string {
     return this.tagsOptions.find((item) => item.id === id)?.viewValue ?? '';

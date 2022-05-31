@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 import { IFilter } from 'src/app/shared/models/article.interfaces';
 import { InPageInfo, InSort } from '@intabia/angular-ui';
 import { IArticle, IArticleInfo, IArticlesInfo } from 'src/app/shared/models/article.interfaces';
@@ -54,6 +54,8 @@ export class ArticlesHttpService {
   getArticle(id: string): Observable<IArticle> {
     return of(
       this.content.find((item) => item.id === id) ?? {} as IArticle
+    ).pipe(
+      delay(1000)
     );
   }
 
