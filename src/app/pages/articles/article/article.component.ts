@@ -6,6 +6,9 @@ import { ArticlesHttpService } from 'src/app/pages/articles/services/articles-ht
 import { IDifficultyOptions, ITagOptions } from 'src/app/shared/models/article.interfaces';
 import { IArticle, IArticleInfo } from 'src/app/shared/models/article.interfaces';
 import { ListsHttpService } from 'src/app/shared/services/lists-http.service';
+import { MatDialog } from '@angular/material/dialog';
+import { WarningComponent } from 'src/app/shared/components/modals/warning/warning.component';
+import { IModalData } from 'src/app/shared/models/modal.interfaces';
 
 @Component({
   selector: 'app-article',
@@ -27,6 +30,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private articlesHttp: ArticlesHttpService,
     private listsHttp: ListsHttpService,
+    private dialog: MatDialog,
   ) {
     this.articleId = this.route.snapshot.params['id'] ?? '';
   }
@@ -100,10 +104,17 @@ export class ArticleComponent implements OnInit, OnDestroy {
     this.isArticleView = true;
   }
 
-  // TODO: добавить модалку с предупреждением, когда будет готова
   deleteArticle() {
+    const dialog = this.dialog.open<WarningComponent, IModalData, boolean>(WarningComponent, {
+      data: {
+        content: 'Вы уверены, что хотите удалить статью?',
+      }
+    });
     this.sub.add(
-      this.articlesHttp.deleteArticle(this.articleId)
+      dialog.afterClosed()
+      .subscribe((isDelete) => {
+        if (isDelete) this.articlesHttp.deleteArticle(this.articleId);
+      })
     );
   }
 }

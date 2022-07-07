@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { PortalModule } from '@angular/cdk/portal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { HeaderComponent } from './shared/components/header/header.component';
-import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER } from '@angular/material/select';
+import { InButtonModule } from '@intabia/angular-ui';
+
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppComponent } from 'src/app/app.component';
+
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { WarningComponent } from 'src/app/shared/components/modals/warning/warning.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    WarningComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +28,7 @@ import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER } from '@angular/material/select';
     HttpClientModule,
     PortalModule,
     MatDialogModule,
+    InButtonModule,
   ],
   providers:  [
     MAT_SELECT_SCROLL_STRATEGY_PROVIDER,
