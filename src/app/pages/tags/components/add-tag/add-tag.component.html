@@ -1,0 +1,27 @@
+<div class="add-tag">
+    <div class="add-tag__header">
+        <h3>Редактирование тега</h3>
+        <button (click)="onClose()">&#10008;</button>
+    </div>
+    <form class="add-tag__form" [formGroup]="addTagForm">
+        <in-input
+            label="Название"
+            placeholder="Введите название"
+            type="text"
+            [formCtrl]="addTagForm.get('title')"
+        ></in-input>
+        <in-select
+            [formCtrl]="addTagForm.get('color')"
+            [options]="colorOptions"
+            label="Цвет"
+        ></in-select>
+        <in-button
+            (click)="addTag()"
+            [disabled]="addTagForm.invalid"
+            type="raised"
+            appearance="accent"
+        >
+            Применить
+        </in-button>
+    </form>
+</div>
