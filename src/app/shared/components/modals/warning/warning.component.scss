@@ -1,7 +1,11 @@
-.warning {
+:host {
     position: relative;
-    padding: 0 var(--S48);
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--S16);
+}
 
+.warning {
     &__header {
         margin-bottom: var(--S20);
         text-align: center;

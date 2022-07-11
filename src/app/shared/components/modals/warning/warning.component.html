@@ -1,27 +1,23 @@
-<div class="warning">
-    <div class="warning__header">
-        <h3>{{ header }}</h3>
-        <button (click)="onReject()">&#10008;</button>
-    </div>
+<div class="warning__header">
+    <h3>{{ header }}</h3>
+    <button (click)="onReject()">&#10008;</button>
+</div>
 
-    <div class="warning__content">
-        <p>{{ content }}</p>
-    </div>
+<p class="warning__content">{{ content }}</p>
 
-    <div class="warning__btn-block">
-        <in-button
-            (click)="onAccept()"
-            type="raised"
-            appearance="accent"
-        >
-            &#10004;
-        </in-button>
-        <in-button
-            (click)="onReject()"
-            type="raised"
-            appearance="warn"
-        >
-            &#10008;
-        </in-button>
-    </div>
+<div class="warning__btn-block">
+    <in-button
+        (click)="onAccept()"
+        type="raised"
+        appearance="accent"
+    >
+        &#10004;
+    </in-button>
+    <in-button
+        (click)="onReject()"
+        type="raised"
+        appearance="warn"
+    >
+        &#10008;
+    </in-button>
 </div>

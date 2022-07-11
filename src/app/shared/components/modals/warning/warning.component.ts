@@ -10,7 +10,6 @@ import { IModalData } from 'src/app/shared/models/modal.interfaces';
 export class WarningComponent {
   header: string;
   content: string;
-  
   constructor(
     private dialogRef: MatDialogRef<WarningComponent, boolean>,
     @Inject(MAT_DIALOG_DATA) public data: IModalData,

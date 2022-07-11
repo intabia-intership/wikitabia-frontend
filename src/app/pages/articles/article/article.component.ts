@@ -32,6 +32,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     private listsHttp: ListsHttpService,
     private dialog: MatDialog,
   ) {
+    // tslint:disable-next-line: no-string-literal
     this.articleId = this.route.snapshot.params['id'] ?? '';
   }
 
@@ -113,7 +114,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     this.sub.add(
       dialog.afterClosed()
       .subscribe((isDelete) => {
-        if (isDelete) this.articlesHttp.deleteArticle(this.articleId);
+        if (isDelete) { this.articlesHttp.deleteArticle(this.articleId); }
       })
     );
   }
