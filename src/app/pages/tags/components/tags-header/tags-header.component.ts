@@ -14,7 +14,6 @@ import { TagsHttpService } from 'src/app/pages/tags/services/tags-http.service';
 })
 export class TagsHeaderComponent extends HeaderComponent implements OnDestroy {
   protected sub: Subscription = new Subscription();
-  
   buttons = [
     {
       name: 'Добавить тег',
