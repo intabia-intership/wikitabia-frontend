@@ -32,7 +32,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
     private listsHttp: ListsHttpService,
     private dialog: MatDialog,
   ) {
-    // tslint:disable-next-line: no-string-literal
     this.articleId = this.route.snapshot.params['id'] ?? '';
   }
 
