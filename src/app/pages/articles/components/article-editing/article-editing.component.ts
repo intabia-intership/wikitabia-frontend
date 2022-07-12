@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IArticle, IDifficultyOptions } from 'src/app/shared/models/article.interfaces';
 
@@ -7,14 +7,28 @@ import { IArticle, IDifficultyOptions } from 'src/app/shared/models/article.inte
   templateUrl: './article-editing.component.html',
   styleUrls: ['./article-editing.component.scss']
 })
-export class ArticleEditingComponent implements OnChanges {
+export class ArticleEditingComponent {
   @Input() difficultyOptions: IDifficultyOptions[] = [];
-  @Input() currentArticle: IArticle | null = null;
+  @Input()
+  set currentArticle(currentArticle: IArticle | null) {
+    if (currentArticle) {
+      const { article, link, difficulty, description } = currentArticle;
+      this.articleForm.patchValue({
+          article,
+          link,
+          difficulty,
+          description,
+      });
+    }
+  }
+  get currentArticle(): IArticle | null {
+    return this.article;
+  }
 
   @Output() save = new EventEmitter<any>();
 
   articleForm: FormGroup;
-
+  article: IArticle | null = null;
   constructor() {
     this.articleForm = new FormGroup({
       article: new FormControl(''),
@@ -22,18 +36,6 @@ export class ArticleEditingComponent implements OnChanges {
       difficulty: new FormControl(''),
       description: new FormControl(''),
     });
-  }
-
-  ngOnChanges() {
-    if (this.currentArticle) {
-      const { article, link, difficulty, description } = this.currentArticle;
-      this.articleForm.patchValue({
-          article,
-          link,
-          difficulty,
-          description,
-      })
-    }
   }
 
   saveHandler(isSave: boolean) {

@@ -52,6 +52,7 @@ export class ArticlesHttpService {
   }
 
   getArticle(id: string): Observable<IArticle> {
+    // TODO: реализовать, когда будет бэк
     return of(
       this.content.find((item) => item.id === id) ?? {} as IArticle
     ).pipe(

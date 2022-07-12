@@ -5,28 +5,28 @@ import { ITagOptions } from 'src/app/shared/models/article.interfaces';
   providedIn: 'root'
 })
 export class TagsService {
-  private _tags: string[] = [];
-  private _historyTags: string[] = [];
-  private _tagsOptions: ITagOptions[] = [];
-
-  get tags(): string[] {
-    return this._tags;
-  }
-
-  get tagsOptions(): ITagOptions[] {
-    return this._tagsOptions;
-  }
+  private Tags: string[] = [];
+  private TagsOptions: ITagOptions[] = [];
+  private historyTags: string[] = [];
 
   set tags(tags: string[]) {
-    this._tags = tags;
-    this._historyTags = Array.from(tags);
+    this.Tags = tags;
+    this.historyTags = Array.from(tags);
+  }
+
+  get tags(): string[] {
+    return this.Tags;
   }
 
   set tagsOptions(tagsOptions: ITagOptions[]) {
-    this._tagsOptions = tagsOptions;
+    this.TagsOptions = tagsOptions;
+  }
+
+  get tagsOptions(): ITagOptions[] {
+    return this.TagsOptions;
   }
 
   resetTags() {
-    this.tags = this._historyTags;
+    this.tags = this.historyTags;
   }
 }

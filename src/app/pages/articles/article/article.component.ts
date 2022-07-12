@@ -13,10 +13,10 @@ import { TagsService } from 'src/app/shared/services/tags.service';
 })
 export class ArticleComponent implements OnInit, OnDestroy {
   private sub: Subscription = new Subscription();
+  private articleId: string;
   currentArticle: IArticle | null = null;
   difficultyOptions: IDifficultyOptions[] = [];
   isArticleView = true;
-  articleId: string;
   difficultyName = '';
   loading = false;
 
@@ -83,12 +83,12 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   saveArticle(articleInfo: IArticleInfo | null) {
     if (articleInfo) {
-      articleInfo.tags = this.tagsService.tags;
+      articleInfo = { ...articleInfo, tags: this.tagsService.tags };
       this.sub.add(
         this.articlesHttp.updateArticle(
           this.articleId,
           articleInfo,
-        ).subscribe(() => {})
+        ).subscribe()
       );
     } else {
       this.tagsService.resetTags();

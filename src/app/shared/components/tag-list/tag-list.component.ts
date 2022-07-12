@@ -10,6 +10,10 @@ import { TagsService } from 'src/app/shared/services/tags.service';
 export class TagListComponent {
   @Input() isEditing = false;
 
+  constructor(
+    private tagsService: TagsService,
+  ) { }
+
   get tags(): string[] {
     return this.tagsService.tags;
   }
@@ -21,10 +25,6 @@ export class TagListComponent {
   get availableTags(): ITagOptions[] {
     return this.tagsOptions.filter((tag) => this.tags.includes(tag.id) || !tag.id ? false : tag);
   }
-
-  constructor(
-    private tagsService: TagsService,
-  ) { }
 
   getTagName(id: string): string {
     return this.tagsOptions.find((item) => item.id === id)?.viewValue ?? '';
