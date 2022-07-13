@@ -27,16 +27,14 @@ export class ArticleEditingComponent {
 
   @Output() save = new EventEmitter<any>();
 
-  articleForm: FormGroup;
+  articleForm: FormGroup = new FormGroup({
+    article: new FormControl(''),
+    link: new FormControl(''),
+    difficulty: new FormControl(''),
+    description: new FormControl(''),
+  });
+
   article: IArticle | null = null;
-  constructor() {
-    this.articleForm = new FormGroup({
-      article: new FormControl(''),
-      link: new FormControl(''),
-      difficulty: new FormControl(''),
-      description: new FormControl(''),
-    });
-  }
 
   saveHandler(isSave: boolean) {
     const data = this.articleForm.getRawValue();

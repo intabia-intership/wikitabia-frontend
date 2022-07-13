@@ -45,6 +45,7 @@ export class ArticlesHttpService {
     sort: InSort | null,
     filter: IFilter | null,
   ): Observable<IArticlesInfo> {
+    // TODO: реализовать, когда будет бэк
     return of({
       content: this.content,
       pageInfo: this.pageInfo,

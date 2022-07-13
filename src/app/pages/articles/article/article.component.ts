@@ -83,11 +83,13 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   saveArticle(articleInfo: IArticleInfo | null) {
     if (articleInfo) {
-      articleInfo = { ...articleInfo, tags: this.tagsService.tags };
       this.sub.add(
         this.articlesHttp.updateArticle(
           this.articleId,
-          articleInfo,
+          {
+            ...articleInfo,
+            tags: this.tagsService.tags,
+          },
         ).subscribe()
       );
     } else {
