@@ -1,8 +1,6 @@
 FROM node:14.18.2 AS build
-ARG AUTH
 WORKDIR /usr/src/app
-COPY package.json package-lock.json .npmrc ./
-RUN npm set _auth $AUTH
+COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
