@@ -23,7 +23,6 @@
         ></in-select>
     </in-card>
 
-
     <in-card class="form-row">
         <in-textarea
             class="form-item"
@@ -35,40 +34,11 @@
         ></in-textarea>
     </in-card>
 
-    <in-card class="form-row">
-        <h3>Выбранные теги:</h3>
-        <ng-container *ngIf="tags.length; else emptyTagList">
-            <in-tag 
-                class="tag"
-                *ngFor="let tag of tags"
-                [appearance]="getTagColor(tag)"
-                (click)="removeTag(tag)"
-            >
-                {{ getTagName(tag) }}
-            </in-tag>
-        </ng-container>
-        <ng-template #emptyTagList>
-            <p>Нет выбранных тегов</p>
-        </ng-template>
-    </in-card>
-
-    <in-card class="form-row">
-        <h3>Доступные теги:</h3>        
-        <ng-container *ngIf="availableTags.length; else emptyAvailableTagList">
-            <in-tag
-                class="tag"
-                *ngFor="let tag of availableTags"
-                [appearance]="tag.color"
-                (click)="addTag(tag.id)"
-            >
-                {{ tag.viewValue }}
-            </in-tag>
-        </ng-container>
-        
-        <ng-template #emptyAvailableTagList>
-            <p>Нет доступных тегов</p>
-        </ng-template>
-    </in-card>
+    <div class="form-row">
+        <app-tag-list
+            [isEditing]="true"
+        ></app-tag-list>
+    </div>
 </form>
 
 <div class="controls-row">

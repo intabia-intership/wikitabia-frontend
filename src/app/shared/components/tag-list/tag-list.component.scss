@@ -1,0 +1,30 @@
+h3 {
+    font-weight: 500;
+}
+
+p {
+    margin-top: 16px;
+}
+
+in-card {
+    margin-top: 20px;
+    background-color: #EFEFEF;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+
+    &:last-child {
+        margin-left: 0;
+    }
+
+    &--pointer {
+        cursor: pointer;
+    }
+}

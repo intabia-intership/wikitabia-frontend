@@ -4,14 +4,6 @@ in-card {
 
 .form {
     margin-top: 40px;
-
-    h3 {
-        font-weight: 500;
-    }
-
-    p {
-        margin-top: 16px;
-    }
 }
 
 .form-row {
@@ -34,17 +26,6 @@ in-card {
     margin-left: 20px;
 
     &:first-child {
-        margin-left: 0;
-    }
-}
-
-.tag {
-    display: inline-block;
-    margin-top: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-
-    &:last-child {
         margin-left: 0;
     }
 }

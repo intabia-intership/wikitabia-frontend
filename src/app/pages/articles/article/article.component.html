@@ -2,21 +2,22 @@
     <a routerLink="../">&ang; Вернуться к списку статей</a>
 </div>
 
-<app-article-view
-    *ngIf="isArticleView; else articleEditing"
-    [currentArticle]="currentArticle"
-    [difficultyName]="difficultyName"
-    (edit)="isArticleView = false"
-    (delete)="deleteArticle()"
-></app-article-view>
+<app-loading *ngIf="loading; else loaded"></app-loading>
 
-<ng-template #articleEditing>
-    <app-article-editing 
+<ng-template #loaded>
+    <app-article-view
+        *ngIf="isArticleView; else articleEditing"
         [currentArticle]="currentArticle"
-        [articleForm]="articleForm"
-        [difficultyOptions]="difficultyOptions"
-        [tags]="tags"
-        [tagsOptions]="tagsOptions"
-        (save)="saveArticle($event)"
-    ></app-article-editing>
+        [difficultyName]="difficultyName"
+        (edit)="isArticleView = false"
+        (delete)="deleteArticle()"
+    ></app-article-view>
+    
+    <ng-template #articleEditing>
+        <app-article-editing 
+            [currentArticle]="currentArticle"
+            [difficultyOptions]="difficultyOptions"
+            (save)="saveArticle($event)"
+        ></app-article-editing>
+    </ng-template>
 </ng-template>
