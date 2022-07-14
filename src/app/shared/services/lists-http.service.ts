@@ -58,5 +58,26 @@ export class ListsHttpService {
       },
     ]);
   }
+
+  getColorList() {
+    return of([
+      {
+        id: '1',
+        viewValue: 'default'
+      },
+      {
+        id: '2',
+        viewValue: 'success'
+      },
+      {
+        id: '3',
+        viewValue: 'danger'
+      },
+      {
+        id: '4',
+        viewValue: 'warning'
+      },
+    ]);
+  }
 }
 

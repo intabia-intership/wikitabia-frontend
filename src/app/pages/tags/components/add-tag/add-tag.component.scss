@@ -1,0 +1,33 @@
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--S16);
+}
+
+.add-tag {
+    &__header {
+        margin-bottom: var(--S20);
+        text-align: center;
+    
+        h3 {
+            width: var(--S180);
+            font-size: var(--S16);
+            font-weight: bold;
+        }
+    
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: inherit;
+        }
+    }
+
+    &__form {
+        display: grid;
+        place-items: center;
+        gap: var(--S4);
+        font-size: var(--S12);
+    }
+}
