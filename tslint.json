@@ -135,7 +135,8 @@
         "options": [
           "ban-keywords",
           "check-format",
-          "allow-pascal-case"
+          "allow-pascal-case",
+          "allow-leading-underscore"
         ]
       },
       "whitespace": {
@@ -147,7 +148,8 @@
           "check-type",
           "check-typecast"
         ]
-      }
+      },
+      "no-string-literal": false  
     },
     "rulesDirectory": [
       "codelyzer"

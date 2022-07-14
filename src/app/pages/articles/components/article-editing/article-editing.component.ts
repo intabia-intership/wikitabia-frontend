@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { IDifficultyOptions, ITagOptions } from 'src/app/shared/models/article.interfaces';
+import { FormControl, FormGroup } from '@angular/forms';
+import { IArticle, IDifficultyOptions } from 'src/app/shared/models/article.interfaces';
 
 @Component({
   selector: 'app-article-editing',
@@ -8,37 +8,36 @@ import { IDifficultyOptions, ITagOptions } from 'src/app/shared/models/article.i
   styleUrls: ['./article-editing.component.scss']
 })
 export class ArticleEditingComponent {
-  @Input() articleForm: FormGroup = new FormGroup({});
   @Input() difficultyOptions: IDifficultyOptions[] = [];
-  @Input() tags: string[] = [];
-  @Input() tagsOptions: ITagOptions[] = [];
+  @Input()
+  set currentArticle(currentArticle: IArticle | null) {
+    if (currentArticle) {
+      const { article, link, difficulty, description } = currentArticle;
+      this.articleForm.patchValue({
+          article,
+          link,
+          difficulty,
+          description,
+      });
+    }
+  }
+  get currentArticle(): IArticle | null {
+    return this.article;
+  }
 
   @Output() save = new EventEmitter<any>();
 
-  get availableTags(): ITagOptions[] {
-    return this.tagsOptions.filter((tag) => this.tags.includes(tag.id) || !tag.id ? false : tag);
-  }
+  articleForm: FormGroup = new FormGroup({
+    article: new FormControl(''),
+    link: new FormControl(''),
+    difficulty: new FormControl(''),
+    description: new FormControl(''),
+  });
 
-  getTagName(id: string): string {
-    return this.tagsOptions.find((item) => item.id === id)?.viewValue ?? '';
-  }
-
-  getTagColor(id: string): string {
-    return this.tagsOptions.find((item) => item.id === id)?.color ?? 'default';
-  }
-
-  addTag(tag: string) {
-    this.tags.push(tag);
-  }
-
-  removeTag(tag: string) {
-    const idx = this.tags.indexOf(tag);
-    this.tags.splice(idx, 1);
-  }
+  article: IArticle | null = null;
 
   saveHandler(isSave: boolean) {
     const data = this.articleForm.getRawValue();
-    data.tags = this.tags;
     isSave ? this.save.emit(data) : this.save.emit(null);
   }
 }

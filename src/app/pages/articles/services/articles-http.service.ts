@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 import { IFilter } from 'src/app/shared/models/article.interfaces';
 import { InPageInfo, InSort } from '@intabia/angular-ui';
 import { IArticle, IArticleInfo, IArticlesInfo } from 'src/app/shared/models/article.interfaces';
@@ -10,7 +10,7 @@ import { INewArticle } from 'src/app/shared/models/article.interfaces';
   providedIn: 'root'
 })
 export class ArticlesHttpService {
-  content = [
+  readonly content = [
     {
       id: '1',
       article: 'Hello World',
@@ -32,27 +32,32 @@ export class ArticlesHttpService {
       thumb_down: 42
     }
   ];
+  readonly pageInfo = {
+    offset: 0,
+    pageSize: 1,
+    total: 2
+  };
 
   constructor(private http: HttpClient) { }
 
   getArticles(
-      params: InPageInfo,
-      sort: InSort | null,
-      filter: IFilter | null,
-    ): Observable<IArticlesInfo> {
+    params: InPageInfo,
+    sort: InSort | null,
+    filter: IFilter | null,
+  ): Observable<IArticlesInfo> {
+    // TODO: реализовать, когда будет бэк
     return of({
       content: this.content,
-      pageInfo: {
-        offset: 0,
-        pageSize: 1,
-        total: 2
-      }
+      pageInfo: this.pageInfo,
     });
   }
 
   getArticle(id: string): Observable<IArticle> {
+    // TODO: реализовать, когда будет бэк
     return of(
       this.content.find((item) => item.id === id) ?? {} as IArticle
+    ).pipe(
+      delay(1000)
     );
   }
 
@@ -62,6 +67,7 @@ export class ArticlesHttpService {
 
   updateArticle(id: string, article: IArticleInfo) {
     // TODO: реализовать, когда будет бэк
+    return of(true);
   }
 
   deleteArticle(id: string) {
