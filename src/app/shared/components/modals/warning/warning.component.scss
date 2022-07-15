@@ -1,0 +1,45 @@
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--S16);
+}
+
+.warning {
+    &__header {
+        margin-bottom: var(--S20);
+        text-align: center;
+    
+        h3 {
+            width: var(--S180);
+            margin: 0 auto;
+            font-size: var(--S16);
+            font-weight: bold;
+        }
+    
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: inherit;
+        }
+    }
+
+    &__content {
+        margin-bottom: var(--S40);
+        text-align: center;
+    }
+
+    &__btn-block {
+        display: flex;
+        justify-content: center;
+
+        in-button {
+            margin-right: 20px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
