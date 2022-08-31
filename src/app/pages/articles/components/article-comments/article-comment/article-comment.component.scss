@@ -1,0 +1,43 @@
+in-card {
+  margin-bottom: 20px;
+}
+
+in-textarea {
+  width: 80%;
+}
+
+.article-comment {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+
+  &__info {
+    width: 100%;
+    margin-right: 20px;
+  }
+
+  &__username {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: var(--S16);
+  }
+
+  &__user {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__body {
+    padding: var(--S16);
+    border: 1px solid var(--GRAY);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 20px;
+
+    & button {
+      background-color: transparent;
+    }
+  }
+}

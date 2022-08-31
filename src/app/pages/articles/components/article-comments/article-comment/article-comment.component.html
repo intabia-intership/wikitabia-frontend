@@ -1,0 +1,43 @@
+<in-card>
+  <div
+    class="article-comment"
+    *ngIf="!editMode; else edit"
+  >
+    <div class="article-comment__info">
+      <div class="article-comment__user">
+        <span class="article-comment__username">
+          {{ commentInfo?.userName }}
+        </span>
+        <span>{{ commentInfo?.publishDate }}</span>
+        <span> в {{ commentInfo?.publishTime }}</span>
+      </div>
+      <div class="article-comment__body">
+        {{commentInfo?.value}}
+      </div>
+    </div>
+    <div class="article-comment__actions">
+        <button (click)="editComment()">
+            <mat-icon>create</mat-icon>
+        </button>
+        <button (click)="deleteComment()">
+            <mat-icon>delete_sweep</mat-icon>
+        </button>
+    </div>
+  </div>
+</in-card>
+
+<ng-template #edit>
+  <in-textarea
+    autosize="true"
+    label="Редактирование комментария"
+    [formCtrl]="commentValue"
+  ></in-textarea>
+  <div class="article-comment__actions">
+    <button (click)="saveEditedComment()">
+        <mat-icon>check</mat-icon>
+    </button>
+    <button (click)="cancelEdit()">
+        <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</ng-template>

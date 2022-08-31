@@ -1,0 +1,17 @@
+<ng-container>
+  <in-card>
+    <in-textarea
+    autosize="true"
+    [formCtrl]="comment"
+    placeholder="Написать комментарий"
+  ></in-textarea>
+    <in-button
+      appearance="primary"
+      type="raised"
+      [disabled]="comment.invalid"
+      (click)="addComment()"
+    >
+      Добавить
+    </in-button>
+  </in-card>
+</ng-container>
