@@ -1,0 +1,19 @@
+<app-loading
+  *ngIf="loading; else loaded"
+  [inner]="true"
+></app-loading>
+<ng-template #loaded>
+  <app-article-comment
+    *ngFor="let comment of comments"
+    [comment]="comment"
+    (deleteCommentEvent)="deleteComment($event)"
+    (saveCommentEvent)="saveComment($event)"
+  ></app-article-comment>
+  <app-loading
+    *ngIf="loadingOnScroll"
+    [inner]="true"
+  ></app-loading>
+  <app-article-add-comment
+    (addCommentEvent)="addComment($event)"
+  ></app-article-add-comment>
+</ng-template>

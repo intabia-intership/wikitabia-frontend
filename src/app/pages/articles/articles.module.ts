@@ -26,6 +26,9 @@ import {
 } from '@intabia/angular-ui';
 import { TagListComponent } from 'src/app/shared/components/tag-list/tag-list.component';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
+import { ArticleCommentsListComponent } from './components/article-comments/article-comments-list/article-comments-list.component';
+import { ArticleCommentComponent } from './components/article-comments/article-comment/article-comment.component';
+import { ArticleAddCommentComponent } from './components/article-comments/article-add-comment/article-add-comment.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { LoadingComponent } from 'src/app/shared/components/loading/loading.comp
     AddArticleComponent,
     TagListComponent,
     LoadingComponent,
+    ArticleCommentsListComponent,
+    ArticleCommentComponent,
+    ArticleAddCommentComponent,
   ],
   imports: [
     CommonModule,

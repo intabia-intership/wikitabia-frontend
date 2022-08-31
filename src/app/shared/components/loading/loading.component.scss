@@ -8,6 +8,16 @@
   margin-left: -40px;
   margin-top: -40px;
 }
+
+.lds-roller.inner {
+  position: static;
+  display: flex;
+  justify-content: center;
+  margin-right: unset;
+  margin-top: unset;
+  width: 100%;
+}
+
 .lds-roller div {
   animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   transform-origin: 40px 40px;
