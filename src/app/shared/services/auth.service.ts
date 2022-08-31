@@ -1,40 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, of, tap } from 'rxjs';
-import { IUser } from '../models/login.interfaces';
-import { ERoutesPath } from '../models/routes';
+import { KeycloakService } from 'keycloak-angular';
+import { from, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+    constructor(private keycloak: KeycloakService) {}
 
-    constructor(private router: Router) {}
-
-    get token(): string | null {
-        return localStorage.getItem('wikitabia-token');
-    }
-
-    set token(value: string | null) {
-        if (value) {
-            localStorage.setItem('wikitabia-token', value);
-        } else {
-            localStorage.clear();
-        }
-    }
-
-    get isAuthenticated(): boolean {
-        return !!this.token;
-    }
-
-    login(user: IUser): Observable<string | null> {
-        // TODO: реализовать асинхронное получение токена с бэка
-        return of('123token')
-        .pipe(
-            tap((response) => this.token = response)
-        );
+    isLoggedIn(): Observable<boolean> {
+        return from(this.keycloak.isLoggedIn());
     }
 
     logout() {
-        this.token = null;
-        this.router.navigateByUrl(ERoutesPath.LOGIN);
+        this.keycloak.logout();
     }
 }

@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@intabia/angular-ui": "^0.0.2",
+    "keycloak-angular": "^10.0.2",
+    "keycloak-js": "^19.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.4"
