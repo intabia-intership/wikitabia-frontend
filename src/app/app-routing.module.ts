@@ -1,18 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginGuard } from './shared/guards/login.guard';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ERoutesPath } from './shared/models/routes';
 import { LayoutGuard } from './shared/guards/layout.guard';
 
 const routes: Routes = [
-  {
-    path: ERoutesPath.LOGIN,
-    canActivateChild: [LoginGuard, LayoutGuard],
-    loadChildren: () => import('./pages/login/login.module').then(
-      (m) => m.LoginModule
-    ),
-  },
   {
     path: ERoutesPath.ARTICLES,
     canActivateChild: [AuthGuard, LayoutGuard],
@@ -29,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ERoutesPath.LOGIN
+    redirectTo: ERoutesPath.ARTICLES
   },
 ];
 

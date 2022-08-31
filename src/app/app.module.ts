@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { PortalModule } from '@angular/cdk/portal';
@@ -10,6 +10,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { WarningComponent } from 'src/app/shared/components/modals/warning/warning.component';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { initializer } from './shared/initializers/initializer';
 
 @NgModule({
   declarations: [
@@ -18,16 +20,23 @@ import { WarningComponent } from 'src/app/shared/components/modals/warning/warni
     WarningComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    BrowserModule,
     HttpClientModule,
-    PortalModule,
-    MatDialogModule,
     InButtonModule,
+    KeycloakAngularModule,
+    MatDialogModule,
+    PortalModule,
   ],
   providers:  [
     MAT_SELECT_SCROLL_STRATEGY_PROVIDER,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializer,
+      multi: true,
+      deps: [KeycloakService],
+    },
   ],
   bootstrap: [AppComponent]
 })
